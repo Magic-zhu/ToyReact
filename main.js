@@ -1,4 +1,16 @@
-import {ToyReact} from './ToyReact'
-let b = <span>hello</span>
-let a = ToyReact.createElement('div',{id:'react'},b)
-document.body.appendChild(a)
+import { ToyReact, Component } from './ToyReact'
+
+class MyComponent extends Component{
+    render() {
+        return (<div>
+            <span>hello</span>
+            <span>word</span>
+            <span>!!!</span>
+        <div>{this.children}</div>
+        </div>)
+    }
+}
+let b = <MyComponent id='toy'>
+    我是slot
+</MyComponent>
+ToyReact.render(b, document.body)

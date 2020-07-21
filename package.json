@@ -4,7 +4,8 @@
   "description": "a toy react just for fun",
   "main": "main.js",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "start":"webpack-dev-server --inline --hot"
   },
   "repository": {
     "type": "git",
