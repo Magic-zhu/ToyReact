@@ -3,6 +3,10 @@ class Node {
         this.root = document.createElement(tag)
     }
     setAttribute(name,value){
+        if(name.match(/^on[\S\s+]$/)){
+            console.log(RegExp.$1.toLowerCase())
+            this.root.addEventListener(RegExp.$1.toLowerCase(),value)
+        }
         this.root.setAttribute(name,value)
     }
     appendChild(vchild){
@@ -23,12 +27,14 @@ class TextNode{
 export class Component{
     constructor(){
         this.children = [];
+        this.props = Object.create(null);
     }
     $mount(parent){
         let dom = this.render()
         dom.$mount(parent)
     }
     setAttribute(name, value) {
+        this.props[name] = value;
         this[name] = value;
     }
     appendChild(vchild){
